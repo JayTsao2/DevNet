@@ -1,17 +1,57 @@
-2022-10-23 13:54:11,922 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 1 hosts
-2022-10-23 13:57:23,749 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 2 hosts
-2022-10-23 13:57:26,124 - nornir.core.task -    ERROR -      start() - Host 'Cisco XRv 9000': task 'napalm_get' failed with traceback:
+2022-10-24 15:37:53,385 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
+2022-10-24 15:38:03,411 - nornir.core.task -    ERROR -      start() - Host 'CSR1000v': task 'napalm_get' failed with traceback:
 Traceback (most recent call last):
-  File "/home/devasc/labs/venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
-    r = self.task(self, **self.params)
-  File "/home/devasc/labs/venv/lib/python3.8/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 44, in napalm_get
-    result[g] = method(**options)
-  File "/home/devasc/labs/venv/lib/python3.8/site-packages/napalm/ios/ios.py", line 1153, in get_facts
-    interface = line.split()[0]
-IndexError: list index out of range
+  File "/home/devasc/.local/lib/python3.8/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/devasc/.local/lib/python3.8/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/home/devasc/.local/lib/python3.8/site-packages/paramiko/util.py", line 279, in retry_on_signal
+    return function()
+  File "/home/devasc/.local/lib/python3.8/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
 
-2022-10-23 13:58:22,876 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 2 hosts
-2022-10-23 14:00:23,066 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
-2022-10-23 14:01:40,556 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
-2022-10-23 14:02:12,184 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
-2022-10-23 14:03:22,018 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/napalm/base/base.py", line 113, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/devasc/.local/lib/python3.8/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/devasc/.local/lib/python3.8/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/devasc/.local/lib/python3.8/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/devasc/.local/lib/python3.8/site-packages/netmiko/base_connection.py", line 1068, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 192.168.56.103:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/devasc/.local/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/devasc/DevNet/venv/lib/python3.8/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/devasc/.local/lib/python3.8/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/devasc/.local/lib/python3.8/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/devasc/DevNet/venv/lib/python3.8/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/usr/local/lib/python3.8/dist-packages/napalm/base/base.py", line 122, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 192.168.56.103
+
+2022-10-24 15:38:39,897 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
