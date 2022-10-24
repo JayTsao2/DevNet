@@ -55,3 +55,5 @@ Traceback (most recent call last):
 napalm.base.exceptions.ConnectionException: Cannot connect to 192.168.56.103
 
 2022-10-24 15:38:39,897 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
+2022-10-24 16:09:10,133 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
+2022-10-24 16:09:27,164 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 3 hosts
