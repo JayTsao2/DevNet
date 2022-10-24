@@ -4,7 +4,7 @@ from napalm import get_network_driver
 if __name__ == '__main__':
 
     driver = get_network_driver('ios')
-    device = driver('192.168.56.103', 'cisco', 'cisco123!')
+    device = driver('192.168.56.101', 'cisco', 'cisco123!')
     
     print("Opening ...")
     device.open()

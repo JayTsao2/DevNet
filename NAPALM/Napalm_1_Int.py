@@ -10,7 +10,7 @@ def main():
     device_list = [
     ["10.188.1.95","nxos", "router_2"],
     ["10.188.1.94", "iosxr", "router_1"],
-    ["192.168.56.103", "ios", "switch"]
+    ["192.168.56.101", "ios", "switch"]
     ]
  
     network_devices = []

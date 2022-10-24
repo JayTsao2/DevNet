@@ -33,7 +33,7 @@ def send_show_command(ip, username, password, enable, commands):
 
 
 if __name__ == "__main__":
-    devices = ["192.168.56.103"]
+    devices = ["192.168.56.101"]
     commands = ["sh ip int br", "sh arp"]
 
     for ip in devices:

@@ -2,7 +2,7 @@ from ncclient import manager
 import xml.dom.minidom
 
 m = manager.connect( 
-    host="192.168.56.103",
+    host="192.168.56.101",
     port=830,
     username="cisco",
     password="cisco123!",
